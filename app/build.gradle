@@ -1,0 +1,47 @@
+apply plugin: 'com.android.application'
+
+android {
+    //compileSdkVersion 29
+    //buildToolsVersion "29.0.2"
+    compileSdkVersion 28
+    //buildToolsVersion "28.0.0"
+    defaultConfig {
+        applicationId "com.example.arobot_java"
+        minSdkVersion 21
+        //targetSdkVersion 29
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    def android_libs_version = "28.0.0"
+    implementation "com.android.support:appcompat-v7:$android_libs_version"
+    implementation "com.android.support:design:$android_libs_version"
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation "com.android.support:support-v4:$android_libs_version"
+
+    def aws_version = "2.16.+"
+    //implementation ("com.amazonaws:aws-android-sdk-lex:$aws_version@aar") { transitive=true }
+    //implementation ("com.amazonaws:aws-android-sdk-mobile-client:$aws_version@aar") { transitive=true }
+    implementation ('com.amazonaws:aws-android-sdk-lex:2.7.+@aar') {transitive = true;}
+    implementation ('com.amazonaws:aws-android-sdk-mobile-client:2.7.+@aar') { transitive = true }
+
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //implementation 'androidx.appcompat:appcompat:1.0.2'
+    //implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //testImplementation 'junit:junit:4.12'
+    //androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+    //androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+}
